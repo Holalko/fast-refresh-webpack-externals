@@ -36,7 +36,11 @@ function renderReact(req: Req, res: Res, next: Next): Res | void {
       <!DOCTYPE html>
       <html>
         <head>
-          <meta charset="UTF-8">
+          <script src="http://localhost:3000/fastrefresh.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js" crossorigin="anonymous"   ></script>
+          <script src="https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js" crossorigin="anonymous"   ></script>
+          
+          <meta charset="UTF-8" />
           ${extractor.getStyleTags()}
           ${styleSheet.getStyleTags()}
         </head>

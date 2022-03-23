@@ -21,13 +21,14 @@ const plugins = isDevMode
   : sharedPlugins;
 
 const main = isDevMode ? ['webpack-hot-middleware/client', './react/index.tsx'] : ['./react/index.tsx'];
-
+const fastRefreshInit = isDevMode ? ['./react/fast-refresh-init.ts'] : []
 const chunkhash = isDevMode ? '' : '?v=[chunkhash:8]';
 
 const webpackConfig: webpack.Configuration = {
   mode: isDevMode ? 'development' : 'production',
   entry: {
     main,
+    fastrefresh: fastRefreshInit
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -37,6 +38,10 @@ const webpackConfig: webpack.Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     rules: [
