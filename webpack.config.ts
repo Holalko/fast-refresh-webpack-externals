@@ -30,6 +30,9 @@ const webpackConfig: webpack.Configuration = {
     main,
     fastrefresh: fastRefreshInit
   },
+  devServer: {
+    hot: true,
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: `[name].js${chunkhash}`,
